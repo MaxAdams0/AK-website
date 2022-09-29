@@ -33,6 +33,10 @@ import Sidebar from './components/Sidebar.vue'
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+    background-color: var(--light);
+}
+
 button {
     cursor: pointer;
     appearance: none;
