@@ -10,13 +10,33 @@
          <span class="input-title">Grade:</span>
          <input class="text-input" v-model="grade" type="text"/>
          <br/>
-         <button id="signin-button">Sign In</button>
-         <img id="loading-svg" src="../assets/svg/ring-resize.svg" alt="loading-svg"/>
+         <div class="container" style="margin-top: 1.0rem;">
+            <button id="signin-button" @click="changeState()">Sign In</button>
+            <div id="state-box">
+                <span class="material-symbols-outlined" style="color:white;">done</span>
+                <!--<span class="material-symbols-outlined" style="color:white;">close</span>-->
+                <!--<span class="material-symbols-outlined" style="color:white;">error</span>-->
+                <!--<img id="loading-svg" src="../assets/svg/ring-resize.svg" alt="loading-svg"/>-->
+            </div>
+         </div>
      </main>
  </template>
 
  <script>
+    export default {
+        data() {
+            return {
+                loginState: 'success'
+            }
+        },
 
+        methods: {
+            changeState() {
+
+            }
+        }
+
+    }
  </script>
 
  <style lang="scss">
@@ -46,10 +66,13 @@
         outline: 0.15rem solid var(--primary);
     }
 
+    .container {
+        display: flex;
+    }
+
     #signin-button {
-        margin-top: 1.0rem;
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-        border-radius: 0.25rem;
+        border-radius: 0.5rem;
         background-color: var(--light);
         transition: all 0.2s;
         opacity: 100%;
@@ -60,5 +83,16 @@
 
     #loader-svg {
         filter: invert(1);
+    }
+
+    #state-box {
+        margin-left: 0.5rem;
+        background-color: var(--success);
+        width: 2.0rem;
+        height: 2.0rem;
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
  </style>
