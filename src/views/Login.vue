@@ -10,14 +10,15 @@
          <span class="input-title">Grade:</span>
          <input class="text-input" v-model="grade" type="text"/>
          <br/>
-         <div class="container" style="margin-top: 1.0rem;">
-            <button id="signin-button" @click="changeState()">Sign In</button>
-            <div id="state-box">
-                <span class="material-symbols-outlined" style="color:white;">done</span>
-                <!--<span class="material-symbols-outlined" style="color:white;">close</span>-->
-                <!--<span class="material-symbols-outlined" style="color:white;">error</span>-->
-                <!--<img id="loading-svg" src="../assets/svg/ring-resize.svg" alt="loading-svg"/>-->
-            </div>
+         <div class="container" style="margin-top: 1.0rem;" @click="changeState()">
+            <button id="signin-button">Sign In</button>
+            <state-box component-type="state-box">
+                <span class="material-symbols-outlined" style="color:white;" v-if="loginState=='success'">done</span>
+                <span class="material-symbols-outlined" style="color:white;" v-if="loginState=='login'">login</span>
+                <span class="material-symbols-outlined" style="color:white;" v-if="loginState=='logout'">logout</span>
+                <span class="material-symbols-outlined" style="color:white;" v-if="loginState=='error'">error</span>
+                <img id="loading-svg" src="../assets/svg/ring-resize.svg" alt="loading-svg" v-if="loginState=='loading'"/>
+            </state-box>
          </div>
      </main>
  </template>
@@ -26,13 +27,16 @@
     export default {
         data() {
             return {
-                loginState: 'success'
+                user: '',
+                id: '',
+                grade: '',
+                loginState: 'login'
             }
         },
 
         methods: {
             changeState() {
-
+                this.$data.loginState = 'logout'
             }
         }
 
@@ -67,12 +71,15 @@
     }
 
     .container {
+        cursor: pointer;
+        width: fit-content;
+        border-radius: 0.5rem;
+        overflow: hidden;
         display: flex;
     }
 
     #signin-button {
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-        border-radius: 0.5rem;
         background-color: var(--light);
         transition: all 0.2s;
         opacity: 100%;
@@ -86,11 +93,9 @@
     }
 
     #state-box {
-        margin-left: 0.5rem;
         background-color: var(--success);
         width: 2.0rem;
         height: 2.0rem;
-        border-radius: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
