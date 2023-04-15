@@ -1,1 +1,9 @@
-This project has stopped development for its original use. I may repurpose this repo for a future project, but I am not currently focusing on web development, and will most likely only come back if I decide to make resume website. This repo is archived.
+# Alpha Knights Website
+This website is the main hub of Alpha Knight's internal operations.
+This includes:
++ Logistics (part requests)
++ Software Guides (for teaching members)
+
+And hopefully more in the future!
+### View the project:
+not yet...

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Swerve from '../views/Swerve.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -9,16 +10,8 @@ const router = createRouter({
             component: Home
         },
         {
-            path: '/login',
-            component: () => import('../views/Login.vue')
-        },
-        {
-            path: '/about',
-            component: () => import('../views/About.vue')
-        },
-        {
-            path: '/settings',
-            component: () => import('../views/Settings.vue')
+            path: '/swerve',
+            component: Swerve
         }
     ]
 })

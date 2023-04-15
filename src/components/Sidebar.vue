@@ -1,7 +1,7 @@
 <template>
-    <aside :class="`${expanded && 'expanded'}`">
+    <aside :class="`${sidebar_expanded && 'sidebar_expanded'}`">
         <div class="logo">
-            <img src="../assets/aklogo.png" alt="aklogo"/>
+            <img src="/aklogo.png" alt="aklogo"/>
         </div>
 
         <div class="menu-toggle-wrap">
@@ -16,13 +16,11 @@
                 <span class="material-symbols-outlined">home</span>
                 <span class="text">Home</span>
             </router-link>
-            <router-link class="button" to="/login">
-                <span class="material-symbols-outlined">login</span>
-                <span class="text">Login</span>
-            </router-link>
-            <router-link class="button" to="/about">
-                <span class="material-symbols-outlined">info</span>
-                <span class="text">About</span>
+        </div>
+        <div class="menu">
+            <router-link class="button" to="/swerve">
+                <span class="material-symbols-outlined">engineering</span>
+                <span class="text">Swerve</span>
             </router-link>
         </div>
         <div class="flex"></div>
@@ -38,12 +36,13 @@
 <script setup>
 import { ref } from 'vue'
 
-const expanded = ref(localStorage.getItem("expanded") === "true")
+const sidebar_expanded = ref(localStorage.getItem("sidebar_expanded") === "true")
+localStorage.setItem("sidebar_expanded", true)
 
 const toggleMenu = () => {
-    expanded.value = !expanded.value
+    sidebar_expanded.value = sidebar_expanded.value
 
-    localStorage.setItem("expanded", expanded.value)
+    localStorage.setItem("sidebar_expanded", sidebar_expanded.value)
 }
 </script>
 
@@ -69,7 +68,7 @@ const toggleMenu = () => {
         margin-bottom: 1rem;
 
             img {
-                width: 2rem; /*1rem=32px*/
+                width: 3rem; /*1rem=32px*/
             }
         }
 
@@ -87,7 +86,7 @@ const toggleMenu = () => {
 
                 .material-symbols-outlined {
                     font-size: 2rem;
-                    color: var(--light);
+                    color: var(--disabled);
                     transition: 0.2s ease-out;
                 }
 
@@ -95,6 +94,7 @@ const toggleMenu = () => {
                     .material-symbols-outlined {
                         opacity: 80%;
                         transform: translateX(0.25rem);
+                        cursor: not-allowed;
                     }
                 }
             }
@@ -106,7 +106,7 @@ const toggleMenu = () => {
         }
 
         h3 {
-            color: var(--grey);
+            color: var(--light);
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -148,7 +148,7 @@ const toggleMenu = () => {
             }
         }
 
-        &.expanded {
+        &.sidebar_expanded {
             width: var(--sidebar-width);
 
             .menu-toggle-wrap {

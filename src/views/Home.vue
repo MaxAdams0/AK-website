@@ -1,6 +1,15 @@
 <template>
    <main class="home-page">
-        <h1>Home</h1>
-        <p>This is the home page.</p>
+        <div class="main">
+            <h1>Home</h1>
+            <p>You can either use the below list for navigation, or the side bar.</p>
+            <span>Guide List:</span>
+            <ul>
+                <li>
+                <span>Guide List:</span>
+                    <li> <a href="/swerve">Swerve (Dis)Assembly</a> </li>
+                </li>
+            </ul>
+        </div>
     </main>
 </template>
